@@ -1,5 +1,5 @@
 /** Copyright 2009 Twitter, Inc. */
-package com.twitter.commons.ratelimiter
+package com.twitter.commons.trie
 import net.lag.logging.Logger
 import scala.collection.mutable
 
@@ -112,7 +112,7 @@ class Trie(val width: Int, val defaultInfo: Any) {
     val (node, startBitPosRem, _, _) = traverseOnePath(key, keyLengthInBits, true, root, 0, root.info, 0)
     val isDup = node.insert(key, keyLengthInBits, info, startBitPosRem)
     if (isDup)
-      log.warning("attempting to overwrite key: %s at depth: %d with info: %s".format(key, keyLengthInBits, info))
+      log.debug("attempting to overwrite key: %s at depth: %d with info: %s".format(key, keyLengthInBits, info))
     isDup
   }
 

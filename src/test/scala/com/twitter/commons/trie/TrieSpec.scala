@@ -1,5 +1,5 @@
 /** Copyright 2009 Twitter, Inc. */
-package com.twitter.commons.ratelimiter
+package com.twitter.commons.trie
 
 import org.specs._
 object TrieSpec extends Specification {
@@ -120,7 +120,6 @@ object TrieSpec extends Specification {
       }
     }
 
-/**
     "many prefixes of each even length up to 11 in a binary trie (stress)" in {
       val maxDepth = 11
       val trie = new Trie(1)
@@ -159,8 +158,6 @@ object TrieSpec extends Specification {
       }
     }
 
-    */
-
     "hashKey of various keys and lengths" in {
 
       val key = new Array[Byte](3)
@@ -191,8 +188,8 @@ object TrieSpec extends Specification {
       val keyLen = 6
       val isDup = testTrie.insert(key, keyLen, greeting)
       isDup mustEqual false
-      println("after adding 0x%x of length %d: testTrie is:".format(key, keyLen))
-      println(testTrie)
+      // println("after adding 0x%x of length %d: testTrie is:".format(key, keyLen))
+      // println(testTrie)
 
       testTrie.search(key, 4) mustEqual (0, testTrie.root.info)
       testTrie.search(key, 8) mustEqual (keyLen, greeting)
